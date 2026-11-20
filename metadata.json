@@ -1,0 +1,6 @@
+{
+  "name": "MotoPark",
+  "description": "Localizador y verificador de aparcamientos para motos en vía pública por dirección, cercanía y vista aérea.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
