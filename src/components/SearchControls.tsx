@@ -263,7 +263,7 @@ export const SearchControls: React.FC<SearchControlsProps> = ({
                   setOpenDropdown(true);
                 }
               }}
-              placeholder="Calle o edificio (ej: Hospital Donostia)..."
+              placeholder="Dirección o edificio..."
               className="w-full h-11 pl-3 pr-9 rounded-xl border border-slate-300 bg-slate-50 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-orange-600 focus:ring-2 focus:ring-orange-600/15 transition-colors"
             />
             {address.length > 0 && (
@@ -336,7 +336,7 @@ export const SearchControls: React.FC<SearchControlsProps> = ({
                   setOpenDropdown(true);
                 }
               }}
-              placeholder="Calle o edificio (ej: Hospital Donostia)"
+              placeholder="Dirección o edificio..."
               className="w-full h-11 pl-3.5 pr-9 rounded-xl border border-slate-300 bg-slate-50 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-orange-600 focus:ring-2 focus:ring-orange-600/15 transition-colors"
             />
             {address.length > 0 && (

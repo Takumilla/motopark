@@ -40,8 +40,8 @@ interface MapViewProps {
   onCancelPlaceSpot: () => void;
 }
 
-const DEFAULT_CENTER: [number, number] = [43.3223, -1.9839];
-const DEFAULT_ZOOM = 13;
+const DEFAULT_CENTER: [number, number] = [40.4168, -3.7038];
+const DEFAULT_ZOOM = 6;
 
 export const MapView: React.FC<MapViewProps> = ({
   origin,

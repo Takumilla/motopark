@@ -32,10 +32,8 @@ import {
   processOverpassElements,
 } from './utils/geo';
 
-const DEFAULT_ADDRESS = 'Calle 31 de Agosto, San Sebastián';
-
 export default function App() {
-  const [address, setAddress] = useState<string>(DEFAULT_ADDRESS);
+  const [address, setAddress] = useState<string>('');
   const [radius, setRadius] = useState<RadiusOption>(300);
   const [origin, setOrigin] = useState<SearchOrigin | null>(null);
   const [rawOsmSpots, setRawOsmSpots] = useState<ParkingSpot[]>([]);
@@ -44,7 +42,7 @@ export default function App() {
   const [onlyFree, setOnlyFree] = useState<boolean>(true);
   const [status, setStatus] = useState<SearchStatus>('idle');
   const [statusMessage, setStatusMessage] = useState<string>(
-    'Introduce una dirección y elige el radio de búsqueda.'
+    'Escribe una calle o edificio emblemático, o usa tu ubicación actual.'
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [selectedSpotId, setSelectedSpotId] = useState<string | null>(null);
@@ -515,7 +513,8 @@ export default function App() {
               onSelectSpot={handleSelectSpot}
               onToggleRoute={handleToggleRoute}
               onExpandRadius={(next) => handleRadiusChange(next)}
-              onQuickSearchDefault={() => void executeSearch()}
+              onUseCurrentLocation={handleUseCurrentLocation}
+              locatingUser={locatingUser}
               onStartAddSpot={handleStartAddSpot}
               onDeleteCommunitySpot={(spot) => void handleDeleteCommunitySpot(spot)}
               onRetry={() => void executeSearch()}
@@ -574,7 +573,8 @@ export default function App() {
               onSelectSpot={handleSelectSpot}
               onToggleRoute={handleToggleRoute}
               onExpandRadius={(next) => handleRadiusChange(next)}
-              onQuickSearchDefault={() => void executeSearch()}
+              onUseCurrentLocation={handleUseCurrentLocation}
+              locatingUser={locatingUser}
               onStartAddSpot={handleStartAddSpot}
               onDeleteCommunitySpot={(spot) => void handleDeleteCommunitySpot(spot)}
               onRetry={() => void executeSearch()}

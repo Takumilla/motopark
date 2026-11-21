@@ -3,6 +3,7 @@ import {
   AlertCircle,
   ExternalLink,
   Eye,
+  LocateFixed,
   MapPin,
   Navigation,
   Plus,
@@ -38,7 +39,8 @@ interface ParkingListProps {
   onSelectSpot: (spot: ParkingSpot) => void;
   onToggleRoute: (spot: ParkingSpot) => void;
   onExpandRadius: (nextRadius: RadiusOption) => void;
-  onQuickSearchDefault: () => void;
+  onUseCurrentLocation: () => void;
+  locatingUser: boolean;
   onStartAddSpot: () => void;
   onDeleteCommunitySpot: (spot: ParkingSpot) => void;
   onRetry?: () => void;
@@ -63,7 +65,8 @@ export const ParkingList: React.FC<ParkingListProps> = ({
   onSelectSpot,
   onToggleRoute,
   onExpandRadius,
-  onQuickSearchDefault,
+  onUseCurrentLocation,
+  locatingUser,
   onStartAddSpot,
   onDeleteCommunitySpot,
   onRetry,
@@ -132,15 +135,18 @@ export const ParkingList: React.FC<ParkingListProps> = ({
             <h2 className="text-sm font-semibold">Aparca gratis donde vayas</h2>
           </div>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Busca cualquier dirección o usa tu GPS para localizar plazas de moto gratuitas,
-            inspeccionar la calle real con Street View u Ortofoto IGN PNOA y trazar la ruta.
+            Busca cualquier dirección o edificio emblemático, o usa tu GPS para localizar plazas de
+            moto gratuitas, inspeccionar la calle real con Street View u Ortofoto IGN PNOA y trazar
+            la ruta.
           </p>
           <button
             type="button"
-            onClick={onQuickSearchDefault}
-            className="w-full min-h-[44px] px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors cursor-pointer"
+            onClick={onUseCurrentLocation}
+            disabled={locatingUser}
+            className="w-full min-h-[44px] px-4 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-60 text-white text-xs font-semibold inline-flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
-            Buscar en la dirección actual
+            <LocateFixed className={`w-4 h-4 ${locatingUser ? 'animate-spin' : ''}`} />
+            <span>{locatingUser ? 'Localizando...' : 'Usar mi ubicación actual'}</span>
           </button>
         </div>
       </div>
